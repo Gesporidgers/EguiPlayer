@@ -1,0 +1,17 @@
+[package]
+name = "rust_player"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+eframe = "0.29"
+rodio = { version = "0.20", default-features = false, features = ["symphonia-all"] }
+rfd = "0.15"
+
+# Чтобы FFT и декодирование не тормозили в debug-режиме
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+lto = true
+codegen-units = 1
